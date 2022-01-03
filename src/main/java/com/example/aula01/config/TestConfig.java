@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.example.aula01.model.entities.Category;
 import com.example.aula01.model.entities.Order;
 import com.example.aula01.model.entities.OrderItem;
+import com.example.aula01.model.entities.Payment;
 import com.example.aula01.model.entities.Product;
 import com.example.aula01.model.entities.User;
 import com.example.aula01.model.entities.enums.OrderStatus;
@@ -52,6 +53,7 @@ public class TestConfig implements CommandLineRunner {
 		
 		Order o2 = new Order(Instant.parse("2019-07-21T03:42:10Z"),
 				OrderStatus.WAITING_PAYMENT, pp); 
+		
 		Order o3 = new Order(Instant.parse("2019-07-22T15:21:22Z"),
 				OrderStatus.WAITING_PAYMENT, hud); 
 		
@@ -94,7 +96,13 @@ public class TestConfig implements CommandLineRunner {
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice()); 
 		
 		OrderItemRepo.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
-
+		
+		Payment pay1 = new Payment(Instant.parse("2019-06-20T22:53:07Z"),
+				o1);
+		
+		o1.setPayment(pay1);
+		
+		OrderRepo.save(o1);
 	}
 
 }
