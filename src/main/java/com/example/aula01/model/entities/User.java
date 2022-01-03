@@ -101,7 +101,7 @@ public class User implements Serializable{
 		this.password = password;
 	}
 	
-	@JsonIgnore
+	
 	public List<Order> getOrders() {
 		return orders;
 	}
