@@ -51,14 +51,13 @@ public class User implements Serializable{
 		this.password = password;
 	}
 	
-	public User(Integer id, String name, String email, String phone, String password, List<Order> orders) {
+	public User(Integer id, String name, String email, String phone, String password) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.password = password;
-		this.orders = orders;
 	}
 
 	public Integer getId() {
