@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.aula01.model.entities.User;
@@ -35,5 +34,17 @@ public class UserService {
 		userRepo.deleteById(id);
 		
 		return user.get();
+	}
+	
+	public User updateUser(Integer id, User user) {
+		Optional<User> entity = userRepo.findById(id);
+		updateEntity(entity.get(), user);
+		return userRepo.save(entity.get());
+	}
+
+	private void updateEntity(User entity, User user) {
+		entity.setName(user.getEmail());
+		entity.setEmail(user.getEmail());
+		entity.setPhone(user.getPhone());
 	}
 }
