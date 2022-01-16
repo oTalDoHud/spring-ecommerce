@@ -61,7 +61,7 @@ public class UserService {
 	}
 
 	private void updateEntity(User entity, User user) {
-		entity.setName(user.getEmail());
+		entity.setName(user.getName());
 		entity.setEmail(user.getEmail());
 		entity.setPhone(user.getPhone());
 	}
