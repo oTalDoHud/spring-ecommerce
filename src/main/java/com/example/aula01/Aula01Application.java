@@ -1,6 +1,7 @@
 package com.example.aula01;
 
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,5 +13,4 @@ public class Aula01Application {
 		SpringApplication.run(Aula01Application.class, args);
 
 	}
-
 }
