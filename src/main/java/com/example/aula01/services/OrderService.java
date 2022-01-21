@@ -1,16 +1,13 @@
 package com.example.aula01.services;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.example.aula01.model.entities.Order;
+import com.example.aula01.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.example.aula01.model.entities.Order;
-import com.example.aula01.repositories.OrderRepository;
+import java.util.Optional;
 
 @Service
 public class OrderService {

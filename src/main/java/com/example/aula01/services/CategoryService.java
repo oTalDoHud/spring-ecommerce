@@ -27,7 +27,7 @@ public class CategoryService {
 		return categoryRepo.findAll(pag);
 	}
 
-	public Page<Category> findAllPag(int pag, int size) {
+	public Page<Category> findAll(int pag, int size) {
 		PageRequest page = PageRequest.of(pag, size);
 
 		return categoryRepo.findAll(page);

@@ -30,15 +30,15 @@ public class OrderResource {
 			@RequestParam(name = "size", required = false) Integer size
 			){
 
-		Page<Order> category;
+		Page<Order> order;
 
 		if (page == null || size == null) {
-			category = service.findAll();
+			order = service.findAll();
 		} else {
-			category = service.findAll(page, size);
+			order = service.findAll(page, size);
 		}
 
-		return ResponseEntity.ok().body(category);
+		return ResponseEntity.ok().body(order);
 	}
 
 // Solução Lucas

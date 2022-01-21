@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,26 +18,25 @@ public class CategoryResource {
 	@Autowired
 	private CategoryService service;
 	
-	@GetMapping
-	public ResponseEntity<Page<Category>> findAll(){
-
-		Page<Category> cat = service.findAll();
-		
-		return ResponseEntity.ok().body(cat);
-	}
-	
 	@GetMapping("/{id}")
 	public ResponseEntity<Category> findById(@PathVariable Integer id) {
 		
 		return ResponseEntity.ok().body(service.findById(id));
 	}
 
-	@GetMapping(path = "/pag/{pag}/size/{size}")
+	@GetMapping
 	public ResponseEntity<Page<Category>> findAllPag(
-			@PathVariable int pag,
-			@PathVariable int size){
+			@RequestParam(name = "page", required = false) Integer page,
+			@RequestParam(name = "size", required = false) Integer size){
 
-		Page<Category> cat = service.findAllPag(pag, size);
+		Page<Category> cat ;
+
+		if(page == null || size == null){
+			cat = service.findAll();
+		}
+		else{
+			cat = service.findAll(page, size);
+		}
 
 		return ResponseEntity.ok().body(cat);
 	}
