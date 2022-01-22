@@ -29,7 +29,7 @@ public class CategoryResource {
 			@RequestParam(name = "page", required = false) Integer page,
 			@RequestParam(name = "size", required = false) Integer size){
 
-		Page<Category> cat ;
+		Page<Category> cat;
 
 		if(page == null || size == null){
 			cat = service.findAll();

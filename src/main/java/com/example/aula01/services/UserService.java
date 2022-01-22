@@ -7,6 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.aula01.model.entities.User;
@@ -26,8 +29,18 @@ public class UserService {
 		return user.orElseThrow(()-> new ResourceNotFoundException(id));
 	}
 	
-	public List<User> findAll(){
-		return userRepo.findAll();
+	public Page<User> findAll(){
+
+		PageRequest pag = PageRequest.of(0, 100);
+
+		return userRepo.findAll(pag);
+	}
+
+	public Page<User> findAll(int page, int size){
+
+		PageRequest pag = PageRequest.of(page, size);
+
+		return userRepo.findAll(pag);
 	}
 	
 	public User insertUser(User user) {
